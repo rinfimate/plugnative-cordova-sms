@@ -1,6 +1,6 @@
- package com.dileepindia.cordova.sms;
+ package plugnative.cordova.sms;
  
- import java.io.StringWriter;
+import java.io.StringWriter;
 import java.lang.reflect.Array;
 import java.sql.Date;
 import java.text.ParseException;

@@ -1,0 +1,33 @@
+{
+  "name": "plugnative-cordova-sms",
+  "version": "1.0.0",
+  "description": "Plugin to operate SMS, send/list/intercept/delete/restore in your cordova hybrid app, quality maintained by plugnative community.",
+  "cordova": {
+    "id": "plugnative-cordova-sms",
+    "platforms": [
+      "android"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PlugNative/plugnative-cordova-sms.git"
+  },
+  "keywords": [
+    "plugnative",
+    "sms",
+    "ecosystem:cordova",
+    "cordova-android"
+  ],
+  "engines": [
+    {
+      "name": "cordova",
+      "version": ">=3.0.0"
+    }
+  ],
+  "author": "dileep-yadav",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/PlugNative/plugnative-cordova-sms/issues"
+  },
+  "homepage": "https://github.com/PlugNative/plugnative-cordova-sms/blob/master/README.md"
+}

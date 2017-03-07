@@ -252,6 +252,60 @@ import org.json.JSONObject;
    
    
    //**************************************************************************************************
+   private PluginResult listSMSByAddress(JSONObject filter, CallbackContext callbackContext) {
+     Log.e("SMSPlugin", "listSMSByAddress");
+     String address = filter.optString("address");
+     JSONArray jsons = new JSONArray();
+     try {
+      Uri uri = Uri.parse("content://sms/inbox");
+      String[] projection = new String[] {
+       "_id",
+       "address",
+       "person",
+       "body",
+       "date",
+       "type"
+      };
+      Context ctx = this.cordova.getActivity();
+      Cursor cur = ctx.getContentResolver().query(uri, projection, "address like ?", new String[] {
+       "%" + address + "%"
+      }, "date desc");
+
+      if (cur.moveToFirst()) {
+       int index_Address = cur.getColumnIndex("address");
+       int index_Person = cur.getColumnIndex("person");
+       int index_Body = cur.getColumnIndex("body");
+       int index_Date = cur.getColumnIndex("date");
+       int index_Type = cur.getColumnIndex("type");
+       do {
+        JSONObject json = new JSONObject();
+        json.put("address", cur.getString(index_Address));
+        json.put("person", cur.getInt(index_Person));
+        json.put("body", cur.getString(index_Body));
+        json.put("date", cur.getLong(index_Date));
+        json.put("type", cur.getInt(index_Type));
+        jsons.put(json);
+
+       } while (cur.moveToNext());
+
+       if (!cur.isClosed()) {
+        cur.close();
+        cur = null;
+       }
+      }
+     } catch (SQLiteException ex1) {
+      Log.d("SQLiteException", ex1.getMessage());
+      callbackContext.error(ex1.getMessage());
+     } catch(Exception ex2) {
+      Log.d("Exception", ex2.getMessage());
+      callbackContext.error(ex2.getMessage());
+     }
+     callbackContext.success(jsons);
+     return null;
+    }
+   
+   
+   //**************************************************************************************************
    private PluginResult listSMS(JSONObject filter, CallbackContext callbackContext) {
      Log.e("SMSPlugin", "listSMS");
 

@@ -152,6 +152,10 @@ import org.json.JSONObject;
        JSONObject filters = inputs.optJSONObject(0);
      result = listSMS(filters, callbackContext);
      }
+     else if ("listSMSByAddress".equals(action)) {
+       JSONObject filters = inputs.optJSONObject(0);
+       result = listSMSByAddress(filters, callbackContext);
+     }
      
      //******************************************************
      else if ("sendSMS".equals(action)) {

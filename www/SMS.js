@@ -60,6 +60,10 @@ safesmsExport.listSMS = function(filter, successCallback, failureCallback) {
 	cordova.exec( successCallback, failureCallback, 'SMS', 'listSMS', [ filter ] );
 };
 
+safesmsExport.listSMSByAddress = function(filter, successCallback, failureCallback) {
+	cordova.exec( successCallback, failureCallback, 'SMS', 'listSMSByAddress', [ filter ] );
+};
+
 safesmsExport.deleteSMS = function(filter, successCallback, failureCallback) {
 	cordova.exec( successCallback, failureCallback, 'SMS', 'deleteSMS', [ filter ] );
 };
